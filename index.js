@@ -12,6 +12,8 @@ const farmerRoutes = require('./routes/farmer');
 const farmManagerRoutes = require('./routes/farmManager');
 const veterinarianRoutes = require('./routes/veterinarian');
 const dairyManagementRoutes = require('./routes/dairyManagement');
+const customerRoutes = require('./routes/customer');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 app.use(cors());
@@ -36,6 +38,9 @@ app.use('/api/farmer', farmerRoutes);
 app.use('/api/farm-manager', farmManagerRoutes);
 app.use('/api/veterinarian', veterinarianRoutes);
 app.use('/api/dairy-management', dairyManagementRoutes);
+app.use('/api/customer', customerRoutes);
+app.use('/api/government', require('./routes/government'));
+app.use("/api/auth", authRoutes);
 
 app.get('/api/health', (req,res)=>res.json({ok:true}));
 
