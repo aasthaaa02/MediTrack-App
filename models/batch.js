@@ -1,6 +1,5 @@
-// models/Batch.js
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const BatchSchema = new Schema({
   batchId: { type: String, unique: true, required: true },
@@ -11,4 +10,5 @@ const BatchSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Batch', BatchSchema);
+// ✅ Prevent "Cannot overwrite `Batch` model once compiled" error
+module.exports = mongoose.models.Batch || mongoose.model('Batch', BatchSchema);
